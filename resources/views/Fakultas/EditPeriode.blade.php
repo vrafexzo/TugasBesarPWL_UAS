@@ -20,26 +20,22 @@
     {{-- CONTENT  --}}
     <div class="container" style="display: flex; flex-direction: column; align-items: center;">
         <div class="card" style="
-            width: 80%;
-            padding: 10px;
-            margin: 100px 0px 0px 0px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 90%;
+        padding: 10px;
+        margin: 90px 0px 0px 0px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         ">
             <div class="card-header pb-0">
-                <h6 class="mb-0">Form Edit Fakultas untuk {{ $fakultas->id_fakultas }}</h6>
+                <h6 class="mb-0">Form Add Periode untuk {{  $periodes->id_periode }}</h6>
             </div>
             <div class="card-body">
-                <form action="{{ url('AddFakultas/' .$fakultas->id_fakultas) }}" method="POST">
+                <form action="{{ route('periode.update', $periodes->id_periode) }}" method="POST">
                     {!!  csrf_field() !!}
                     @method("PATCH")
-                    {{-- <div class="mb-3">
-                        <label for="id" class="form-label">ID Fakultas</label>
-                        <input type="text" class="form-control" id="id" name="id" value="{{ $fakultas->id_fakultas }}">
-                    </div> --}}
-                    <input type="hidden" class="form-control" id="id" name="id" value="{{ $fakultas->id_fakultas }}">
+                    <input type="hidden" class="form-control" id="id_periode" name="id_periode" value="{{ $periodes->id_periode }}" placeholder="Masukkan Periode" required>
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Fakultas</label>
-                        <input type="text" class="form-control" id="nama" name="nama" value="{{ $fakultas->nama_fakultas }}">
+                        <label for="nama_periode" class="form-label">nama periode</label>
+                        <input type="text" class="form-control" id="nama_periode" name="nama_periode" value="{{ $periodes->nama_periode }}" placeholder="Masukkan Jenis Beasiswa" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>

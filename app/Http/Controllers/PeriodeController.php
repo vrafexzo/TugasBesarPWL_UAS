@@ -28,24 +28,26 @@ class PeriodeController extends Controller
         return redirect()->route('periode.index')->with('success', 'Beasiswa added successfully');
     }
 
-    public function edit($id)
+    public function edit($periode)
     {
-        $periodes = Periode::find($id);
-        return view('Fakultas.Periode')->with([
-            'title' => 'Edit User',
+
+
+        $periodes = Periode::find($periode);
+        return view('Fakultas.EditPeriode')->with([
+            'title' => 'Edit Periode',
             'periodes' => $periodes
         ]);
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $periode)
     {
         $request->validate([
             'id_periode' => 'required|string|max:5',
             'nama_periode' => 'required|string|max:50'
         ]);
 
-        $periode = Periode::findOrFail($id);
+        $periode = Periode::findOrFail($periode);
         $periode->update($request->all());
 
         return redirect()->route('periode.index')->with('success', 'Beasiswa updated successfully');
